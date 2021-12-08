@@ -34,9 +34,13 @@ spec:
         volumeMounts:
         - mountPath: /cvmfs-root
           name:  cvmfs-root
+      tolerations:
+        - effect: NoSchedule
+          key: nvidia.com/gpu
+          operator: Exists
       containers:
       - name: cvmfs
-        image: fbarreir/cvmfs-prp:latest
+        image: {{ .Values.image_name }}
         imagePullPolicy: Always
         securityContext:
           privileged: true
@@ -49,10 +53,9 @@ spec:
               command: ["/usr/local/sbin/unmount-and-terminate.sh"]
         env:
         - name: MOUNT_REPOS
-          value: "atlas.cern.ch,atlas-condb.cern.ch,atlas-nightlies.cern.ch,grid.cern.ch,sft.cern.ch,sft-nightlies.cern.ch,unpacked.cern.ch"
+          value: {{ join ".cern.ch," .Values.repositories | printf "%s.cern.ch" }}
         - name: SQUID_URI
-          # for example "xxx.xxx.xxx.xxx:3128"
-          value: "DIRECT"
+          value: {{ default "DIRECT" .Values.squid_endpoint }}
         - name: QUOTA_LIMIT
           value: "6000"
         resources:
@@ -64,10 +67,10 @@ spec:
              cpu: 0.01
         livenessProbe:
           exec:
-            command:  # returns 0(=Success) only if there are 7 cvmfs mounts
+            command:  # returns 0(=Success) only if there are the correct amount of cvmfs mounts
               - /bin/sh
               - -c
-              - "[ `df -h | grep cvmfs2 | wc -l` -eq 7 ]"
+              {{- len .Values.repositories | printf " [ `df -h | grep cvmfs2 | wc -l` -eq %d ]" }} 
           initialDelaySeconds: 300
           periodSeconds: 10
           failureThreshold: 3
@@ -76,9 +79,10 @@ spec:
           mountPath: /cvmfs
           subPath: cvmfs-k8s
           mountPropagation: Bidirectional
-      priorityClassName: system-node-critical
+      {{ if .Values.use_priority_class }}
+        priorityClassName: system-node-critical
+      {{ end }}
       volumes:
       - name: cvmfs-root
         persistentVolumeClaim:
           claimName: cvmfs-root
-

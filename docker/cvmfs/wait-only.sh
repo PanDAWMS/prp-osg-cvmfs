@@ -6,6 +6,6 @@
 
 echo "$$" > /etc/mount-and-wait.pid
 
-echo "Sleeping"
+echo "`date`: Sleeping"
 sleep infinity
 

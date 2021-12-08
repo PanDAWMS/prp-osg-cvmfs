@@ -1,7 +1,9 @@
+{{- $cvmfs_path := .Values.cvmfs_path }}
+{{- range $repo := .Values.repositories }}
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: cvmfs-config-atlas-condb
+  name: cvmfs-config-{{ $repo }}
 # Local storage does not need a provisioner
 provisioner: kubernetes.io/no-provisioner
 # Give it out as-is
@@ -11,7 +13,7 @@ volumeBindingMode: Immediate
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: cvmfs-config-atlas-condb
+  name: cvmfs-config-{{ $repo }}
 spec:
   capacity:
     storage: 2Gi
@@ -19,9 +21,9 @@ spec:
   accessModes:
   - ReadOnlyMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: cvmfs-config-atlas-condb
+  storageClassName: cvmfs-config-{{ $repo }}
   local:
-    path: /cvmfs-k8s/atlas-condb.cern.ch
+    path: {{ $cvmfs_path }}/cvmfs-k8s/{{ $repo }}.cern.ch
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -34,12 +36,13 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cvmfs-config-atlas-condb
+  name: cvmfs-config-{{ $repo }}
 spec:
   accessModes:
   - ReadOnlyMany
   resources:
     requests:
       storage: 2Gi
-  storageClassName: cvmfs-config-atlas-condb
-
+  storageClassName: cvmfs-config-{{ $repo }}
+---
+{{- end }}
