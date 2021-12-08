@@ -1,8 +1,4 @@
-cvmfs_path: /mnt/disks
-
-squid_endpoint: 10.132.0.4:3128
-
-use_priority_class: false
+squid_endpoint: DIRECT
 
 repositories:
   - atlas
@@ -13,4 +9,4 @@ repositories:
   - sft-nightlies
   - unpacked
 
-image_name: eu.gcr.io/gke-dev-311213/cvmfs-prp:latest
+image_name: <WHERE YOU'VE UPLOADED THE CVMFS IMAGE>
