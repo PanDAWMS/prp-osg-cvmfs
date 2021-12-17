@@ -1,4 +1,5 @@
-FROM centos:centos7
+FROM centos:7
+ARG TARGETPLATFORM
 
 # Install CVMFS RPM
 RUN yum install -y https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest.noarch.rpm && \
