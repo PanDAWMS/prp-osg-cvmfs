@@ -39,8 +39,8 @@ spec:
           key: nvidia.com/gpu
           operator: Exists
         - effect: NoSchedule
-            key: processor/arm
-            operator: Exists
+          key: arm-processor
+          operator: Exists
       containers:
       - name: cvmfs
         image: {{ .Values.image_name }}
