@@ -74,8 +74,8 @@ spec:
               - /bin/sh
               - -c
               - {{len .Values.repositories | printf "[ `df -h | grep cvmfs2 | wc -l` -eq %d ]" | quote}}
-          initialDelaySeconds: { { default 180 .Values.startup_initial_delay } }
-          periodSeconds: { { default 60 .Values.probe_period } }
+          initialDelaySeconds: {{ default 180 .Values.startup_initial_delay }}
+          periodSeconds: {{ default 60 .Values.probe_period }}
           failureThreshold: 8
         livenessProbe:
           exec:
