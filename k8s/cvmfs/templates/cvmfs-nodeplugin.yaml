@@ -82,6 +82,7 @@ spec:
           mountPath: /cvmfs
           subPath: cvmfs-k8s
           mountPropagation: Bidirectional
+      terminationGracePeriodSeconds: 30
       {{ if .Values.use_priority_class }}
         priorityClassName: system-node-critical
       {{ end }}
