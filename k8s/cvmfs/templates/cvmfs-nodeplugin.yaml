@@ -74,8 +74,8 @@ spec:
               - /bin/sh
               - -c
               - {{len .Values.repositories | printf "[ `df -h | grep cvmfs2 | wc -l` -eq %d ]" | quote}}
-          initialDelaySeconds: 500
-          periodSeconds: 10
+          initialDelaySeconds: {{ default 600 .Values.liveness_initial_delay }}
+          periodSeconds: {{ default 60 .Values.liveness_period }}
           failureThreshold: 3
         volumeMounts:
         - name:  cvmfs-root

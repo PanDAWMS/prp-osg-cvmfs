@@ -10,3 +10,7 @@ repositories:
   - unpacked
 
 image_name: <WHERE YOU'VE UPLOADED THE CVMFS IMAGE>
+
+liveness_initial_delay: 600
+
+liveness_period: 60
