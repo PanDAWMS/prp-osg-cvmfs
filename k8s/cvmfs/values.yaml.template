@@ -11,6 +11,6 @@ repositories:
 
 image_name: <WHERE YOU'VE UPLOADED THE CVMFS IMAGE>
 
-startup_initial_delay: 180
+startup_initial_delay: 300
 
 probe_period: 60
