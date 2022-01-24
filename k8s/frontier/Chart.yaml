@@ -1,0 +1,6 @@
+apiVersion: v2
+name: frontier-helm
+description: Install Frontier pod
+type: application
+version: 0.1.0
+
