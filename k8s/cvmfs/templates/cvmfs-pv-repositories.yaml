@@ -16,7 +16,7 @@ metadata:
   name: cvmfs-config-{{ $repo }}
 spec:
   capacity:
-    storage: 2Gi
+    storage: 7Gi
   volumeMode: Filesystem
   accessModes:
   - ReadOnlyMany
@@ -42,7 +42,7 @@ spec:
   - ReadOnlyMany
   resources:
     requests:
-      storage: 2Gi
+      storage: 7Gi
   storageClassName: cvmfs-config-{{ $repo }}
 ---
 {{- end }}

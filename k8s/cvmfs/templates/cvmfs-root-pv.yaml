@@ -17,7 +17,7 @@ metadata:
   name: cvmfs-root
 spec:
   capacity:
-    storage: 5Gi
+    storage: 50Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
@@ -44,5 +44,5 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 50Gi
   storageClassName: cvmfs-root
