@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontier-squid
-  namespace: cvmfs
+  namespace: frontier
   labels:
     k8s-app: frontier-squid
 spec:

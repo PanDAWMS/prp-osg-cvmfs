@@ -1,3 +1,5 @@
+# Create the frontier namespace
+kubectl create -f namespace-frontier.yaml
 # Create the frontier configuration config map
 kubectl create -f config-map-frontier.yaml
 # Create a frontier pod in the cvmfs namespace

@@ -22,4 +22,4 @@ data:
     }'
 metadata:
   name: config-map-frontier
-  namespace: cvmfs
+  namespace: frontier
