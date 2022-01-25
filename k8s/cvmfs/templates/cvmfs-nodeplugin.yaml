@@ -60,7 +60,7 @@ spec:
         - name: SQUID_URI
           value: {{ default "DIRECT" .Values.squid_endpoint }}
         - name: QUOTA_LIMIT
-          value: "6000"
+          value: {{ default 50000 .Values.quota_limit }}
         resources:
            limits:
              memory: 4Gi
