@@ -3,7 +3,7 @@ ARG TARGETPLATFORM
 
 # Install CVMFS RPM
 RUN yum install -y https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest.noarch.rpm && \
-    yum install -y cvmfs strace openssh-client
+    yum install -y cvmfs strace openssh-clients
 
 RUN yum clean all
 
