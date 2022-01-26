@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# start system logging
+/usr/sbin/rsyslogd
+
 echo `date && ls -lrt /cvmfs`
 
 if [ "x${SQUID_URI}" == "x" ]; then
