@@ -60,7 +60,11 @@ spec:
         - name: SQUID_URI
           value: {{ default "DIRECT" .Values.squid_endpoint }}
         - name: QUOTA_LIMIT
-          value: {{ default "50000" .Values.quota_limit }}
+          value: "{{ default 50000 .Values.quota_limit }}"
+        - name: CVMFS_DEBUGLOG
+          value: {{ default "" .Values.debuglog }}
+        - name: CVMFS_USYSLOG
+          value: {{ default "" .Values.usyslog }}
         resources:
            limits:
              memory: 4Gi

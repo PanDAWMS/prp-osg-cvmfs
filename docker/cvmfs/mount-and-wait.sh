@@ -13,6 +13,13 @@ if [ "x${QUOTA_LIMIT}" != "x" ]; then
   echo "CVMFS_QUOTA_LIMIT=${QUOTA_LIMIT}" >> /etc/cvmfs/default.local
 fi
 
+if [ "x${CVMFS_DEBUGLOG}" != "x" ]; then
+  echo "CVMFS_DEBUGLOG=${CVMFS_DEBUGLOG}" >> /etc/cvmfs/default.local
+fi
+
+if [ "x${CVMFS_USYSLOG}" != "x" ]; then
+  echo "CVMFS_USYSLOG=${CVMFS_USYSLOG}" >> /etc/cvmfs/default.local
+fi
 
 if [ "x${MOUNT_REPOS}" == "x" ]; then
   echo "`date`: Missing MOUNT_REPOS" 1>&2

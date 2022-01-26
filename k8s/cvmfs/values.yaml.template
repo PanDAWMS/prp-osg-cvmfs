@@ -1,5 +1,7 @@
 squid_endpoint: DIRECT
 quota_limit: 50000
+debuglog: ""
+usyslog: ""
 
 repositories:
   - atlas
