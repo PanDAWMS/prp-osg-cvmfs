@@ -6,8 +6,9 @@ if [ "x${SQUID_URI}" == "x" ]; then
   echo "`date`: Missing SQUID_URI" 1>&2
   exit 1
 fi
-echo "CVMFS_HTTP_PROXY=\"${SQUID_URI}\"" >/etc/cvmfs/default.local
+echo "CVMFS_HTTP_PROXY=\"${SQUID_URI}\"" > /etc/cvmfs/default.local
 
+echo "CVMFS_NFILES=131072" >> /etc/cvmfs/default.local
 
 if [ "x${QUOTA_LIMIT}" != "x" ]; then
   echo "CVMFS_QUOTA_LIMIT=${QUOTA_LIMIT}" >> /etc/cvmfs/default.local
