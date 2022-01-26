@@ -81,16 +81,18 @@ spec:
           initialDelaySeconds: {{ default 300 .Values.startup_initial_delay }}
           periodSeconds: {{ default 60 .Values.probe_period }}
           failureThreshold: 10
+        {{ if not .Values.skip_liveness }}
         livenessProbe:
           exec:
-            command:  # returns 0(=Success) only if there are the correct amount of cvmfs mounts
+            command: # returns 0(=Success) only if there are the correct amount of cvmfs mounts
               - /bin/sh
               - -c
               - {{len .Values.repositories | printf "[ `df -h | grep cvmfs2 | wc -l` -eq %d ]" | quote}}
           # initialDelaySeconds is replaced by startupProbe above
           # initialDelaySeconds: {{ default 600 .Values.liveness_initial_delay }}
-          periodSeconds: {{ default 60 .Values.probe_period }}
+          periodSeconds: { { default 60 .Values.probe_period } }
           failureThreshold: 5
+        {{ end }}
         volumeMounts:
         - name:  cvmfs-root
           mountPath: /cvmfs
