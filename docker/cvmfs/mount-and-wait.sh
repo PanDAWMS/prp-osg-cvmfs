@@ -37,15 +37,6 @@ mps=""
 for mp in `echo ${MOUNT_REPOS} |tr , ' '` ; do 
  echo "`date`: Processing /cvmfs/${mp}"
 
- #if [ -d /cvmfs/${mp} ]; then
-   # force clean if already there
- #  echo "WARNING: Found /cvmfs/${mp}. Unmounting." | tee -a /cvmfs/cvmfs-pod.log
- #  umount -l /cvmfs/${mp}
- #  rmdir /cvmfs/${mp}
- #else
- #  echo "DID NOT SEE DIRECTORY /cvmfs/${mp}"
- #fi
-
  # There are situations where the above -d check does not see the directory. Force cleanup before trying to mount
  umount -l /cvmfs/${mp}
  rmdir /cvmfs/${mp}
@@ -68,14 +59,14 @@ for mp in `echo ${MOUNT_REPOS} |tr , ' '` ; do
    exit 2
  fi
   # Wait between each mount
-  sleep $[ ( $RANDOM % 10 )  + 30 ]s
+  sleep $[ ( $RANDOM % 5 ) ]s
   echo "`date`: Finished /cvmfs/${mp}"
 done
 
 echo "$mps" > /etc/mount-and-wait.mps
 
 echo "`date`: INFO: CVMFS mountpoints started: $mps"  | tee -a /cvmfs/cvmfs-pod.log
-/usr/local/sbin/wait-only.sh
+/usr/local/sbin/check.sh
 echo "`date`: INFO: Terminating"   | tee -a /cvmfs/cvmfs-pod.log
 
 # cleanup
