@@ -29,8 +29,8 @@ spec:
              memory: 0.5Gi
              cpu: 1
            requests:
-             memory: 0.2Gi
-             cpu: 0.01
+             memory: 0.5Gi
+             cpu: 0.25
         volumeMounts:
         - mountPath: /cvmfs-root
           name:  cvmfs-root
