@@ -9,14 +9,14 @@ echo "$$" > /etc/mount-and-wait.pid
 while :
 do
 	for mp in `echo ${MOUNT_REPOS} |tr , ' '` ; do
-    echo "`date`: checking /cvmfs/${mp}"
+    echo "`date`: checking /cvmfs/${mp}" | tee -a /cvmfs/cvmfs-pod.log
 
      if [ `df | grep ${mp} | wc -l` -eq 0 ]; then
-       echo "`date`: /cvmfs/${mp} is DOWN"
+       echo "`date`: /cvmfs/${mp} is DOWN" | tee -a /cvmfs/cvmfs-pod.log
        if [ ! -f /dev/shm/unmounting.lck ]; then
          umount -l /cvmfs/${mp}
          rmdir /cvmfs/${mp}
-         echo `date && ls -lrt /cvmfs`
+         echo `date && ls -lrt /cvmfs` | tee -a /cvmfs/cvmfs-pod.log
 
          mkdir -p /cvmfs/${mp}
          mount -t cvmfs ${mp} /cvmfs/${mp}
@@ -29,7 +29,7 @@ do
          sleep 5
        fi
     else
-      echo "`date`: /cvmfs/${mp} is OK"
+      echo "`date`: /cvmfs/${mp} is OK" | tee -a /cvmfs/cvmfs-pod.log
     fi
   done
 	sleep 10
