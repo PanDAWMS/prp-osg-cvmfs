@@ -1,0 +1,16 @@
+squid_endpoint: "10.100.244.68:3128"
+quota_limit: "50000"
+debuglog: "/tmp/cvmfs_debuglog"
+usyslog: "/tmp/cvmfs_usyslog"
+skip_liveness: true
+
+repositories:
+  - atlas
+  - atlas-condb
+  - atlas-nightlies
+  - grid
+  - sft
+  - sft-nightlies
+  - unpacked
+
+image_name: fbarreir/cvmfs-multiarch
