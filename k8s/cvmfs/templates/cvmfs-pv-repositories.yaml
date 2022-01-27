@@ -23,7 +23,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cvmfs-config-{{ $repo }}
   local:
-    path: {{ $cvmfs_path }}/cvmfs-k8s/{{ $repo }}.cern.ch
+    path: /var/lib/cvmfs-k8s/{{ $repo }}.cern.ch
   nodeAffinity:
     required:
       nodeSelectorTerms:

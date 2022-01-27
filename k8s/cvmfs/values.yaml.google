@@ -1,5 +1,3 @@
-cvmfs_path: /mnt/disks
-
 squid_endpoint: 10.132.0.4:3128
 
 use_priority_class: false
