@@ -1,5 +1,5 @@
 squid_endpoint: "10.132.0.4:3128"
-
+quota_limit: 20000
 use_priority_class: false
 
 repositories:

@@ -11,7 +11,9 @@ if [ "x${SQUID_URI}" == "x" ]; then
 fi
 echo "CVMFS_HTTP_PROXY=\"${SQUID_URI}\"" > /etc/cvmfs/default.local
 
-echo "CVMFS_NFILES=131072" >> /etc/cvmfs/default.local
+if [ "x${CVMFS_NFILES}" != "x" ]; then
+  echo "CVMFS_NFILES=${CVMFS_NFILES}" >> /etc/cvmfs/default.local
+fi
 
 if [ "x${QUOTA_LIMIT}" != "x" ]; then
   echo "CVMFS_QUOTA_LIMIT=${QUOTA_LIMIT}" >> /etc/cvmfs/default.local
