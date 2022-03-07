@@ -27,6 +27,10 @@ if [ "x${CVMFS_USYSLOG}" != "x" ]; then
   echo "CVMFS_USYSLOG=${CVMFS_USYSLOG}" >> /etc/cvmfs/default.local
 fi
 
+if [ "x${CVMFS_MEMCACHE_SIZE}" != "x" ]; then
+  echo "CVMFS_MEMCACHE_SIZE=${CVMFS_MEMCACHE_SIZE}" >> /etc/cvmfs/default.local
+fi
+
 if [ "x${MOUNT_REPOS}" == "x" ]; then
   echo "`date`: Missing MOUNT_REPOS" 1>&2
   exit 1

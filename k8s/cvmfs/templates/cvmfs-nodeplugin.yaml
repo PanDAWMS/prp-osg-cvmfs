@@ -46,6 +46,8 @@ spec:
           value: {{ default "" .Values.debuglog }}
         - name: CVMFS_USYSLOG
           value: {{ default "" .Values.usyslog }}
+        - name: CVMFS_MEMCACHE_SIZE
+          value: {{ default "" .Values.memcache_size }}
         resources:
            limits:
              memory: 4Gi
