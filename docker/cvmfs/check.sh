@@ -8,7 +8,7 @@ echo "$$" > /etc/mount-and-wait.pid
 
 while :
 do
-  df_out = $(df)
+  df_out=$(df)
 	for mp in `echo ${MOUNT_REPOS} |tr , ' '` ; do
     echo "`date`: checking /cvmfs/${mp}" | tee -a /cvmfs/cvmfs-pod.log
 
