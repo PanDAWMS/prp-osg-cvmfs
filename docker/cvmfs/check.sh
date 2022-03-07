@@ -26,6 +26,14 @@ do
            echo "`date`: INFO: Mounted /cvmfs/${mp}" | tee -a /cvmfs/cvmfs-pod.log
          else
            echo "`date`: ERROR: Failed to mount $mp"  | tee -a /cvmfs/cvmfs-pod.log
+           echo "`date`: INFO: Killing leftover processes"
+           ps aux | grep cvmfs | grep ${mp} | awk '{print $2}' | xargs -l kill -9
+           rc_kill=$?
+           if [ ${rc_kill} -eq 0 ] ; then
+               echo "`date`: INFO: Killed leftover processes for ${mp}" | tee -a /cvmfs/cvmfs-pod.log
+           else
+               echo "`date`: ERROR: Failed to kill leftover processes for ${mp}" | tee -a /cvmfs/cvmfs-pod.log
+           fi
          fi
          sleep 5
        fi
