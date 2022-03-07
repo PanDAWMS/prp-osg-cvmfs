@@ -50,11 +50,11 @@ spec:
           value: {{ default "" .Values.memcache_size }}
         resources:
            limits:
-             memory: 4Gi
-             cpu: 1
+             memory: "{{ default 4 .Values.limits_mem }}Gi"
+             cpu: "{{ default 1 .Values.limits_cpu }}"
            requests:
-             memory: 0.5Gi
-             cpu: 0.25
+             memory: "{{ default 0.5 .Values.requests_mem }}Gi"
+             cpu: "{{ default 0.25 .Values.requests_cpu }}"
         startupProbe:
           exec:
             command: # returns 0(=Success) only if there are the correct amount of cvmfs mounts
