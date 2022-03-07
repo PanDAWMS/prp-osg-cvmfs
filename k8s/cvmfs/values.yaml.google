@@ -4,9 +4,9 @@ use_priority_class: false
 cvmfs_path: /run/
 memcache_size: 1024
 requests_cpu: 2
-requests_memory: 8
+requests_mem: 8
 limits_cpu: 4
-limits_memory: 10
+limits_mem: 10
 
 repositories:
   - atlas
