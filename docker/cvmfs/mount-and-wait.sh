@@ -65,7 +65,7 @@ for mp in `echo ${MOUNT_REPOS} |tr , ' '` ; do
    exit 2
  fi
   # Wait between each mount
-  sleep $[ ( $RANDOM % 5 ) ]s
+  sleep $[ ( $RANDOM % 5 ) + 10 ]s
   echo "`date`: Finished /cvmfs/${mp}"
 done
 
