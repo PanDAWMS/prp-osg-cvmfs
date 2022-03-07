@@ -2,7 +2,7 @@ FROM centos:7
 ARG TARGETPLATFORM
 
 # Install CVMFS RPM
-RUN yum install -y https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest.noarch.rpm && \
+RUN yum install -y https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-2-6.noarch.rpm && \
     yum install -y cvmfs strace openssh-clients rsyslog
 
 RUN yum clean all
