@@ -80,9 +80,7 @@ spec:
           name:  cvmfs-base
           mountPropagation: Bidirectional
       terminationGracePeriodSeconds: 30
-      {{ if .Values.use_priority_class }}
-        priorityClassName: system-node-critical
-      {{ end }}
+      priorityClassName: cvmfs-high-prio
       volumes:
       - name: cvmfs-base
         hostPath:
