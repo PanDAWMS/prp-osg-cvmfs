@@ -64,8 +64,8 @@ for mp in `echo ${MOUNT_REPOS} |tr , ' '` ; do
    echo "`date`: Leaving"
    exit 2
  fi
-  # Wait between each mount
-  sleep $[ ( $RANDOM % 5 ) + 10 ]s
+  # Wait and check between each mount
+  sleep=$[ ( $RANDOM % 5 ) + 30 ]s
   echo "`date`: Finished /cvmfs/${mp}"
 done
 
