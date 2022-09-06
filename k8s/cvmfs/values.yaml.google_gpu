@@ -1,0 +1,20 @@
+squid_endpoint: "10.4.16.3:3128"
+quota_limit: 3000
+cvmfs_path: /run/
+memcache_size: 2048
+requests_cpu: 0.3
+requests_mem: 3
+limits_cpu: 1
+limits_mem: 5
+use_priority_class: true
+
+repositories:
+  - atlas
+  - atlas-condb
+  - atlas-nightlies
+  - grid
+  - sft
+  - sft-nightlies
+  - unpacked
+
+image_name: eu.gcr.io/atlas-panda-prod/cvmfs-prp:latest
