@@ -1,6 +1,5 @@
 squid_endpoint: "10.132.0.4:3128"
 quota_limit: 3000
-cvmfs_path: /run/
 memcache_size: 2048
 requests_cpu: 2
 requests_mem: 15
