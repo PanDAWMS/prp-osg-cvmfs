@@ -22,6 +22,9 @@ spec:
         - effect: NoSchedule
           key: arm-processor
           operator: Exists
+        - effect: NoSchedule
+          key: megamem
+          operator: Exists
       containers:
       - name: cvmfs
         image: {{ .Values.image_name }}
