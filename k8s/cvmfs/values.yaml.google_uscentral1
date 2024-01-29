@@ -16,4 +16,4 @@ repositories:
   - sft-nightlies
   - unpacked
 
-image_name: us-east4-docker.pkg.dev/atlas-panda-prod/panda-us-central1/cvmfs-prp:latest
+image_name: us-central1-docker.pkg.dev/atlas-panda-prod/panda-us-central1/cvmfs-prp:latest
