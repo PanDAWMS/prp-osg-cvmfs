@@ -1,6 +1,8 @@
 squid_endpoint: "10.4.16.3:3128"
 quota_limit: 3000
-memcache_size: 2048
+# The memcache size (per repository!) needs to correspond to the requests_mem and limits_mem, otherwise the pod will be OOMKilled
+# The OOMKilled causes restarts of the pod and is visible by running 'dmesg' on the pod
+# memcache_size: 256
 requests_cpu: 1
 requests_mem: 2
 use_priority_class: true
@@ -14,4 +16,4 @@ repositories:
   - sft-nightlies
   - unpacked
 
-image_name: us-central1-docker.pkg.dev/atlas-panda-prod/panda-us-central1/cvmfs-prp:latest
+image_name: us-central1-docker.pkg.dev/atlas-panda-prod/panda-us-central1/cvmfs-prp-al9:latest
