@@ -23,6 +23,10 @@ spec:
           key: arm-processor
           operator: Exists
         - effect: NoSchedule
+          key: kubernetes.io/arch
+          operator: Equal
+          value: arm64
+        - effect: NoSchedule
           key: megamem
           operator: Exists
       containers:
